@@ -1,4 +1,4 @@
-// Model
+// MODEL
 class Board {
   constructor() {
     this.state = {};
@@ -31,33 +31,32 @@ class Board {
   }
 }
 
-// View
-// Update DOM with current board
+// VIEW
+var updateView = () => {
+  var boxArr = document.getElementById('board').children;
+  for (var i = 0; i < boxArr.length; i++) {
+    var row = boxArr[i].children;
+    for (var r = 0; r < row.length; r++) {
+      var input = board.state.currentBoard[i][r] || '_';
+      row[r].innerHTML = '[' + input + ']';
+    }    
+  }
+};
 
-
-// Controller
+// CONTROLLER
 var board;
+var boxes = document.getElementsByClassName('box');
+
 window.onload = () => {
   board = new Board();
   board.init();
-  // update with view
+  updateView();
 }
 
-var boxes = document.getElementsByClassName('box');
 Array.from(boxes).forEach((box) => {
   box.addEventListener('click', (e) => {
     var location = e.srcElement.id.split(/row|column/);
     board.mark(location[1] - 1, location[2] - 1);
+    updateView();
   });
 });
-
-
-
-
-
-// var placeMarker = (location) => {
-//   document.getElementById(location)
-//     .innerHTML = '<p style="text-align: center; font-size: 25px">' + currentPlayer + '</p>';
-
-
-// };
