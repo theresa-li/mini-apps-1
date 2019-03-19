@@ -16,13 +16,16 @@ class Board {
   }
 
   mark(row, column) {
+    if (this.state.currentBoard[row][column]) {
+      document.getElementById('messages').innerHTML = 'That spot is already taken!';
+      return;
+    }
     this.state.currentBoard[row][column] = this.state.currentPlayer;
     if (this.state.currentPlayer === 'x') {
       this.state.currentPlayer = 'o';
     } else {
       this.state.currentPlayer = 'x';
     }
-    console.log(this.state);
   }
 
   // Check for match
