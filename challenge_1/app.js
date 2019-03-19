@@ -20,6 +20,7 @@ class Board {
       document.getElementById('messages').innerHTML = 'That spot is already taken!';
       return;
     }
+    document.getElementById('messages').innerHTML = '';
     this.state.currentBoard[row][column] = this.state.currentPlayer;
     if (this.state.currentPlayer === 'x') {
       this.state.currentPlayer = 'o';
@@ -63,3 +64,8 @@ Array.from(boxes).forEach((box) => {
     updateView();
   });
 });
+
+var resetBoard = () => {
+  board.init();
+  updateView();
+}
