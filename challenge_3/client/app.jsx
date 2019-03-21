@@ -22,7 +22,7 @@ class Signup extends React.Component {
   render () {
     return (
       <form action="/signup" method="POST" className="form-signup">
-        <h1>Sign Up</h1>
+        <h1>Sign Up: </h1>
         <div>
           <label htmlFor="name">Name: </label><br />
           <input id="name" type="text"></input>
@@ -53,7 +53,7 @@ class Shipping extends React.Component {
   render () {
     return (
       <form action="/shipping" method="POST" className="form-shipping">
-        <h1>Address: </h1>
+        <h1>Shipping Information </h1>
         <div>
           <label htmlFor="lineOne">Line 1: </label><br />
           <input id="lineOne" type="text"></input>
@@ -85,6 +85,34 @@ class Shipping extends React.Component {
 }
 
 class Payment extends React.Component {
+  constructor () {
+    super ()
+  }
+
+  render () {
+    return (
+      <form action="/payment" method="POST" className="form-payment">
+        <h1>Payment Information: </h1>
+        <div>
+          <label htmlFor="card-number">Credit Card #: </label><br />
+          <input id="card-number" type="text"></input>
+        </div>
+        <div>
+          <label htmlFor="expiry-date">Expiry Date: </label><br />
+          <input id="expiry-date" type="text"></input>
+        </div>
+        <div>
+          <label htmlFor="cvv">CVV: </label><br />
+          <input id="cvv" type="text"></input>
+        </div>
+        <div>
+          <label htmlFor="billing-zipcode">Billing Zipcode: </label><br />
+          <input id="billing-zipcode" type="text"></input>
+        </div>
+        <input type="submit" value="Next"></input>
+      </form>
+    );
+  }
 }
 
 ReactDOM.render(<Checkout />, document.getElementById('app'));
