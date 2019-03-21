@@ -109,9 +109,32 @@ class Payment extends React.Component {
           <label htmlFor="billing-zipcode">Billing Zipcode: </label><br />
           <input id="billing-zipcode" type="text"></input>
         </div>
-        <input type="submit" value="Next"></input>
+        <input type="submit" value="Next" onClick={this.paymentClickHandler}></input>
       </form>
     );
+  }
+
+  paymentClickHandler () {
+    ReactDOM.render(<Confirmation />, document.getElementById('app'));
+  }
+}
+
+class Confirmation extends React.Component {
+  constructor () {
+    super ()
+  }
+
+  render () {
+    return (
+      <div>
+        <h1>Confirmation: </h1>
+        <button onClick={this.confirmClickHandler}>Purchase</button>
+      </div>
+    );
+  }
+
+  confirmClickHandler () {
+    ReactDOM.render(<Checkout />, document.getElementById('app'));
   }
 }
 
